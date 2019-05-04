@@ -1,0 +1,410 @@
+/**
+ *
+ * Apply Here your Custom CSS
+ *
+*/
+
+@font-face {
+    font-family: 'canterburyregular';
+    src: url('../fonts/canterbury-webfont.woff2') format('woff2'),
+         url('../fonts/canterbury-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.top_nav .system_name a {
+    font-family: 'canterburyregular';
+}
+
+span.grade-right::before {
+    content: "\f00c";
+    font-family: fontawesome;
+    color: green;
+}
+.tablu table.table tr th:nth-child(odd), .tablu table.table tr td:nth-child(odd) {
+    color: #ffffff;
+}
+.tablu .tab-pane center table.table.table-bordered tr th:nth-child(odd), .tablu .tab-pane center table.table.table-bordered tr td:nth-child(odd) {
+    background-color: transparent;
+    color: #000;
+}
+body, h1, h2, h3, h4, h5 {
+    color:#73879C !important;
+}
+.system-logo{
+    width:50px;
+    margin-top: -8px;
+}
+.login-progressbar{
+    height: 10px !important;
+    background: none !important;
+    border-radius: 0;
+}
+.login-progressbar div{
+    height: 10px !important;
+}
+
+.progress-bar-danger{    
+    background-color:#4e7d2a !important;
+    opacity: .8;
+}
+
+.page-container .sidebar-menu #main-menu li ul > li > a {
+    padding-left: 60px;
+}
+
+.nav-md ul.nav.child_menu li ul li:before {
+    background: none !important;
+}
+
+.nav-md ul.nav.child_menu li ul li:after {
+    border-left: none !important;
+}
+
+li.dropdown.language-selector {
+    padding-top:4px;
+}
+
+.dropdown.language-selector span.label{
+    padding-top: .5em;
+}
+
+.dropdown.language-selector .label-success{
+    background: none;
+    /* color:#515356!important; */
+}
+.dropdown.language-selector i.entypo-globe{
+    vertical-align: middle;
+}
+.dropdown.language-selector i.entypo-down:before{
+    vertical-align: middle;
+}
+
+.sidebar-menu .opened.active > ul{
+    display: block !important;
+}
+
+.sidebar-menu  > ul > li > ul
+
+.main_container .top_nav {
+    display: block;
+    margin-left: 230px;
+}
+
+.top_nav .system_name{
+    /*float: left;*/
+    margin-top: 15px;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: #000;
+    /* text-shadow: 1px 1px 3px black; */
+}
+
+.top_nav ul > li span:not(.message
+), .top_nav ul > li i {
+    color: #666;
+}
+
+.table-responsive{
+    overflow: auto;
+}
+
+.message-overflow{
+    white-space: nowrap!important;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+
+.profile_thumb{
+    overflow: hidden;
+    padding:0 !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar-right .img-circle.profile_img{
+    width:30px;
+    height:30px;
+    float:left;
+    margin: 0;
+    margin-right: 5px;
+}
+select.form-control {
+    min-width: 60px;
+}
+.form-group.class-list {
+    float: left;
+    width: 46%;
+}
+
+.form-group.list-search {
+    float: left;
+    width: 50%;
+}
+
+.form-group.list-search input[type="text"] {
+    float: left;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+@media only screen and (max-width: 520px) {
+    .top_nav .system_name a img{
+        display: none;
+    }
+    .top_nav .system_name a{
+        font-size:3vw;
+    }
+
+
+}
+
+@media only screen and (max-width: 370px) {
+    .top_nav .system_name a{
+        display: none;
+    }
+    .top_nav .navbar-right{
+        margin-top: -20px !important;
+    }
+    .top_nav .navbar-right li{
+        margin-left: -3vw;
+        font-weight: bold;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .language-selector > .dropdown-toggle{
+        padding-left:0;
+        padding-right: 0;
+    }
+    .dropdown.language-selector span.label{
+        padding-left:0;
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 305px) {
+    .dropdown.language-selector{
+        margin-top: -20px;
+    }
+    .language-selector > .dropdown-toggle{
+        padding:0;
+        padding: 0;
+    }
+    .dropdown.language-selector span.label{
+        padding:0;
+        padding: 0;
+    }
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f6f6;
+    padding-top:0px;
+}
+
+textarea{
+    resize: none;
+    height: 70px !important;
+}
+
+.control-label{
+    margin-top: 5px;
+}
+
+.panel{
+    margin: 20px auto;
+    max-width: 1000px;
+    /*    text-align: center;*/
+}
+
+.panel-heading{
+    border-bottom: solid 1px #ddd;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.install-step-group{
+    margin: 20px 0;
+}
+
+.install-step-group > div{
+    padding:0;
+}
+
+.circle{
+    background-color: #fff;
+    border: solid 3px #679368;
+    color: #679368;
+    width:38px;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 50%;
+    margin: 10px 0;
+}
+
+.circle.active{
+    background-color: #679368;
+    color: #fff;
+    border:double 3px #fff;
+}
+
+.clear{
+    width: 100%;
+    clear: both;
+    height: 0;
+    float: none;
+}
+
+.tips{
+    color: #f00;
+}
+
+.step-line{
+    background-color:#679368;
+    height: 10px;
+    top:-35px;
+    left: 5px;
+    z-index: -1;
+    position: relative;
+}
+
+
+/* WALLET CUSTOM CSS */
+
+.panel-header
+{
+    background-color: #333;
+    height: auto;
+     background:url('../img/bg.jpg');
+     background-repeat: no-repeat;
+     color: #fff;
+     font-family: 'Nunito Sans', sans-serif;
+    padding-bottom: 60px;
+}
+.panel-create
+{
+   background-color: #fff;
+    border:solid 1px #fff;
+    height: auto;
+    color: #333;
+
+    webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.total-expense
+{
+    background-color:  #53d192;
+    height: auto;
+    color: #fff;
+    width: 30%;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 13px;
+    padding-top: 13px;
+    font-family: 'Nunito Sans', sans-serif;
+
+}
+.total-income
+{
+    background-color:#25afac;
+     height: auto;
+    color: #fff;
+    width: 30%;
+   padding-left: 8px;
+    padding-right: 8px;
+   padding-bottom: 13px;
+    padding-top: 13px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.col-md-8
+{
+    font-family: 'Nunito Sans', sans-serif;
+}
+.col-md-4
+{
+    font-family: 'Nunito Sans', sans-serif;
+}
+.btnPay
+{
+    background-color: #ffd44f;
+    border: solid 1px #ffd44f;
+    color: #333;
+    padding: 0 43px;
+    line-height: 25px;
+    border-radius: 20px;
+    margin: 22px 35px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: auto;
+    font-weight: bold;
+}
+.btnPay:focus
+{
+    background-color: #ffd44f;
+    border: solid 1px #ffd44f;
+    color: #333;
+    padding: 0 43px;
+    line-height: 25px;
+    border-radius: 20px;
+    margin: 22px 35px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: auto;
+    font-weight: bold;
+}
+.txtamount
+{
+    border-radius: 16px;
+    border: solid 1px #53d192;
+}
+input[type="text"], select, input[type = "url"], input[type = "email"], input[type = "password"], input[type = "number"], textarea {
+        outline: none;
+        box-shadow:none !important;
+        border-radius: 5px;
+       /* border: solid 2px #53d192;*/
+        height: 40px;
+        color: #333;
+        font-family: 'Rubik', sans-serif;
+       -webkit-font-smoothing: antialiased;
+       border-radius: 16;
+       width: 50%;
+      /* border-radius: unset;*/
+    font-family: 'Nunito Sans', sans-serif;
+}
+.amounterror
+{
+    width: 90%;
+   
+    border-color: #f5c6cb;
+    color:#721c24;
+  
+   font-size: 19px;
+
+}
+.messageDiv
+{
+    width: 90%;
+   
+    border-color: #53d192;
+    color:#53d192;
+  
+   font-size: 19px;
+}
+
+@media (max-width: 768px){
+    .install-step-group{
+        display: none;
+    }
+}
