@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Student;
 use App\Wallet;
+use App\Wallet_Transaction;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -231,14 +232,14 @@ class UserController extends Controller
    public function updatenextofkin(Request $request, $email)
    {
 
-      $user = Auth::user();
+     $user = Auth::user();
      $email = $user->email;
      $userToUpdate = User::whereemail($email)->FirstOrFail();
      $userToUpdate->nname = $request->get('nname');
      $userToUpdate->relationship = $request->get('relationship');
      $userToUpdate->nphone = $request->get('nphone');
      $userToUpdate->nemail = $request->get('nemail');
-      $userToUpdate->naddress = $request->get('naddress');
+     $userToUpdate->naddress = $request->get('naddress');
     
 
      $userToUpdate->save();
@@ -260,11 +261,12 @@ class UserController extends Controller
      $oldImageUrl = $userToUpdate->imageurl;
 
 
-        if($files=$request->file('image'))
+        if($request->hasFile('image'))
         {
-           $name=$files->getClientOriginalName();
-         $files->move('profileImage',$name);
-          $userToUpdate->imageurl = $name;
+           $file = $request->file('image');
+           $name=$file->getClientOriginalName();
+           $file->move('profileImage',$name);
+           $userToUpdate->imageurl = $name;
         }
        $userToUpdate->save();
        
@@ -278,20 +280,62 @@ class UserController extends Controller
 
      }
 
+// return view to fund wallet
 
-    // request()->validate([
-
-         //   'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
-       // ]);
-        //$imageName = time().'.'.request()->image->getClientOriginalExtension();
-        
-
-       // request()->image->move(public_path('profileImage'), $imageName);
-       //return redirect('/profile')->with('success', 'Profile image updated successfully')->with('image',$imageName);
-
-           
+  public function wallet()
+  {
+    $user = Auth::user();
+    $email = $user->email;
+    $transactionLists = Wallet_Transaction::whereuser_email($email)->get();
 
 
-   }
+    $walletUser = Wallet::whereEmail($email)->FirstOrFail();
+    return view('wallet', compact('transactionLists', 'walletUser'));
+  }
+
+  // Endpoint to insert into wallet and transaction log table after Paystack payment
+
+  public function walletendpoint(Request $request)
+  {
+
+    $data = json_decode($request->get('data'));
+    $amount = $data->walletamount;
+    $transactionId = $data->transactionResponse;
+
+    $user = Auth::user();
+    $email = $user->email;
+    $walletDetails = Wallet::whereEmail($email)->FirstOrFail();
+    $walletBalance = $walletDetails->Balance;
+    $walletBalance +=$amount;
+    $walletDetails->Balance = $walletBalance;
+
+    if($walletDetails->save())
+    {
+      $wallet_transaction = new Wallet_Transaction();
+      $wallet_transaction->transaction_Id = $transactionId;
+      $wallet_transaction->user_email = $email;
+      $wallet_transaction->amount =$amount;
+      $wallet_transaction->log_message = "Wallet credit via Paystack";
+      $wallet_transaction->transaction_type ="Credit";
+      $wallet_transaction->save();
+    }
+
+   // Insert into wallet transaction log
+  
+   return response()->json($walletDetails);
+
+        // dd($walletDetails);
+       //  if($messages = "success")
+      //{
+      // $response = Response::json($message, 200);
+      //}
+      // Insert into transactio log table
+     //  dd($walletBalance);
+    //return view('walletendpoint');
+
+
+
+  }
+
+}
 

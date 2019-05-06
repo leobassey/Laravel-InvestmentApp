@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+ //   return view('welcome');
+//});
+
+// This route group keeps all route that unauthenticated users should see
+Route::group(['middleware' =>'guest'], function()
+{
 
 /* -- Start of register route -- */
 Route::get('/register', 'UserController@signup');
@@ -23,19 +27,17 @@ Route::post('/register', 'UserController@postSignup')->name('signup');
 Route::get('/login', 'UserController@login')->name('login');
 Route::post('/login', 'UserController@postLogin')->name('signin');
 
+});
+
+
+// This route group keeps all route that authenticated users should see
+Route::group(['middleware' =>'auth'], function()
+{
+
 Route::get('/logout', 'UserController@logout')->name('logout');
-Route::get('/student', 'UserController@getStudent')->name('student');
 
 // User profile route
-//Route::get('/profile', 'UserController@profile')->name('profile');
-
-Route::get('/profile', [
-
-	'uses' => 'UserController@profile',
-	'as' => 'profile',
-	'middleware' => 'auth'
-
-	]);
+Route::get('/profile', 'UserController@profile')->name('profile');
 
 // route to return form to edit user profile - personal details
 Route::get('/biodata', 'UserController@editbiodata')->name('editbiodata');
@@ -53,17 +55,34 @@ Route::post('/updatenextofkin/{email}/edit', 'UserController@updatenextofkin')->
 
 Route::post('/updateprofileimage/{email}/edit', 'UserController@updateprofileimage')->name('updateprofileimage');
 
+// route for wallet funding
 
+Route::get('/wallet', 'UserController@wallet')->name('wallet');
+// route to update the wallet balance and create transaction log
+Route::post('walletendpoint', 'UserController@walletendpoint');
+//Route::get('walletendpoint', 'UserController@walletendpoint');
 
-//Route::get('/user', 'UserController@getUserDashboard')->name('user-dashboard');
+// route to get a user dashboard
+Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
 
-Route::get('/dashboard', [
+/*Route::get('/dashboard', [
 
 	'uses' => 'UserController@dashboard',
 	'as' => 'dashboard',
 	'middleware' => 'auth'
 
-	]);
+	]);*/
+
+
+});
+
+
+
+
+
+
+
+
 
 
 

@@ -132,12 +132,12 @@ margin-top: 10px;
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              @if(empty($userDetails->imageurl))
+ @if(empty(Auth::user()->imageurl))
   <img src="images/default_avatar.jpg" alt="Image" width="30px" style="border-radius:50px;"/>
  
   
  @else
-  <img src="{{ asset('profileImage/' . $userDetails->imageurl) }}" width="30px" style="border-radius:50px;"/>
+  <img src="{{ asset('profileImage/' . Auth::user()->imageurl) }}" width="30px" style="border-radius:50px;"/>
 
  @endif
               <!-- hidden-xs hides the username on small devices so only the image appears. -->

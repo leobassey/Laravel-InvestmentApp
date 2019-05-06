@@ -7,7 +7,14 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="images/default_avatar.jpg" class="img-circle" alt="User Image">
+         @if(empty(Auth::user()->imageurl))
+  <img src="images/default_avatar.jpg" alt="Image" width="30px" style="border-radius:50px;"/>
+ 
+  
+ @else
+  <img src="{{ asset('profileImage/' . Auth::user()->imageurl) }}" width="30px" style="border-radius:50px;"/>
+
+ @endif
         </div>
         <div class="pull-left info">
           <p>School Admin</p>
@@ -22,18 +29,10 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header"><a href="{{route('dashboard')}}" style="padding: 7px 7px 7px 7px; font-weight: bold; font-size: 18px">User dashboard</a></li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="treeview">
-          <a href="#"><i class="fa fa-th"></i> <span>Manage Students</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="viewStudents.php"><i class="fa fa-circle-o"></i>All Students</a></li>
-            <li><a href="promotion.php"><i class="fa fa-circle-o"></i>Promote Students</a></li>
-             <li><a href="addcomments.php"><i class="fa fa-circle-o"></i>Add Comments</a></li>
-          </ul>
-        </li>
+        
+            <li><a href="{{route('wallet')}}"><i class="fa fa-circle-o"></i>My Wallet</a></li>
+           
+      
 
 
         <li><a href="viewParents.php"><i class="fa fa fa-book"></i>Manage Parents</a></li>
